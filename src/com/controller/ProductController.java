@@ -1,6 +1,8 @@
 package com.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,13 +14,16 @@ import com.model.Product;
 import com.repo.ProductRepository;
 
 @Controller
+@RequestMapping("/product")
 public class ProductController {
 
 	@Autowired
 	private ProductRepository productRepo;
 
 	@RequestMapping(value = "/getProductList", method = RequestMethod.POST)
-	public @ResponseBody List<Product> getProducs() {
-		return productRepo.getAllProducts();
+	public @ResponseBody Map<String, List<Product>> getProducs() {
+		Map<String, List<Product>> products = new HashMap<String, List<Product>>();
+		products.put("products", productRepo.getAllProducts());
+		return products;
 	}
 }

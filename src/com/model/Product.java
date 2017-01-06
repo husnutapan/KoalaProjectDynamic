@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 @Document
 @Component
 public class Product {
-
 	@Id
 	private String id;
 	private String name;
