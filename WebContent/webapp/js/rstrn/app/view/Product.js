@@ -16,8 +16,32 @@ Ext.define('MyApp.view.Product', {
 		flex : 1
 	} ],
 
-	initComponent : function() {
-		this.callParent();
-	}
+	dockedItems : [ {
+		xtype : 'toolbar',
+		ui : 'footer',
+		layout : {
+			pack : 'center'
+		},
+		defaults : {
+			minWidth : 80
+		},
+
+		items : [ {
+			text : 'Create',
+			xtype : 'button',
+			itemId : 'btnCreate',
+
+		}, {
+			text : 'Load Data',
+			itemId : 'btnLoad'
+		}, {
+			text : 'Save',
+			itemId : 'btnSave'
+		}, {
+			text : 'Delete',
+			itemId : 'btnDelete'
+		} ]
+
+	} ],
 
 });

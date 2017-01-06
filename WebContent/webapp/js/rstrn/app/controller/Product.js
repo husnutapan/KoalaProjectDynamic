@@ -6,8 +6,13 @@ Ext.define('MyApp.controller.Product', {
 		selector : 'product',
 		xtype : 'product',
 		autoCreate : true
+	}, {
+
+		ref : 'ProductCrudWindow',
+		selector : 'ProductCrudWindow',
+		autoCreate : true
 	} ],
-	views : [ 'MyApp.view.Product' ],
+	views : [ 'MyApp.view.Product', 'MyApp.view.windows.ProductCrudDialog' ],
 
 	store : [ 'MyApp.store.Products' ],
 
@@ -15,8 +20,14 @@ Ext.define('MyApp.controller.Product', {
 
 		this.control({
 			'product' : {
-				render : this.loadItem
+				render : this.loadItem,
+				itemdblclick : function(grid, record) {
+					var window = Ext.widget('ProductCrudWindow');
+					window.down('form').loadRecord(record);
+					window.show();
+				}
 			}
+
 		});
 	},
 
